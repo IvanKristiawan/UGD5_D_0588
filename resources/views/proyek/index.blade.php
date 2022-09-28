@@ -44,13 +44,19 @@
                                     @forelse ($proyek as $item)
                                     <tr>
                                         <td class="text-center">{{$item->nama_proyek }}</td>
-                                        <td class="text-center">{{$item->departemen_id }}</td>
+                                        @forelse ($departemen as $d)
+
+                                            @if ($d->id == $item->departemen_id)
+                                                <td class="text-center">{{$d->nama_departemen }}</td>
+                                            @endif
+                                            @empty
+                                        @endforelse
                                         <td class="text-center">{{$item->waktu_mulai }}</td>
                                         <td class="text-center">{{$item->waktu_selesai }}</td>
                                         @if ($item->status == 1)
-                                        <td class="text-center">Wanita</td>
+                                        <td class="text-center">Berjalan</td>
                                         @else
-                                        <td class="text-center">Pria</td>
+                                        <td class="text-center">Berhenti</td>
                                         @endif
                                     </tr>
                                     @empty
@@ -61,7 +67,9 @@
                                 </tbody>
                             </table>
 
-                            {{ $proyek->links() }}
+                            <div style="display: flex; justify-content: center">
+                                {{ $proyek->links() }}
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->

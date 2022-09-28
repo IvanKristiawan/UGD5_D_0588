@@ -47,7 +47,15 @@
                                     <tr>
                                         <td class="text-center">{{$item->nomor_induk_pegawai }}</td>
                                         <td class="text-center">{{$item->nama_pegawai }}</td>
-                                        <td class="text-center">{{$item->id_departemen }}</td>
+                                        @forelse ($departemen as $d)
+
+                                            @if ($d->id == $item->id_departemen)
+                                                <td class="text-center">{{$d->nama_departemen }}</td>
+                                            @endif
+                                        @empty
+                                        @endforelse
+
+                                        
                                         <td class="text-center">{{$item->email }}</td>
                                         <td class="text-center">{{$item->telepon }}</td>
                                         @if ($item->gender == 1)
@@ -69,7 +77,9 @@
                                 </tbody>
                             </table>
 
-                            {{ $pegawai->links() }}
+                            <div style="display: flex; justify-content: center">
+                                {{ $pegawai->links() }}
+                            </div>
                         </div>
                     </div>
                     <!-- /.card-body -->
