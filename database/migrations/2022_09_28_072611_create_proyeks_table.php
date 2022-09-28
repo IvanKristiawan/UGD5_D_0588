@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pegawais', function (Blueprint $table) {
+        Schema::create('proyeks', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor_induk_pegawai');
-            $table->string('nama_pegawai');
-            $table->unsignedBigInteger('id_departemen');
-            $table->foreign('id_departemen')->reference('id')->on('departemens');
-            $table->string('email');
-            $table->integer('telepon');
-            $table->boolean('gender');
+            $table->string('nama_proyek');
+            $table->unsignedBigInteger('departemen_id');
+            $table->foreign('departemen_id')->references('id')->on('departemens');
+            $table->date('waktu_mulai');
+            $table->date('waktu_selesai');
             $table->boolean('status');
             $table->timestamps();
         });
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pegawais');
+        Schema::dropIfExists('proyeks');
     }
 };

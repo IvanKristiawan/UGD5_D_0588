@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 /* Import Model */
-use App\Models\Pegawai;
+use App\Models\Proyek;
 use Illuminate\Http\Request;
 use DB;
 
-class PegawaiController extends Controller
+class ProyekController extends Controller
 {
      /**
      * index
@@ -18,12 +18,12 @@ class PegawaiController extends Controller
     public function index()
     {
         // det posts
-        $pegawai = Pegawai::get();
-        $pegawai = DB::table('pegawais')->paginate(5);
+        $proyek = Proyek::get();
+        $proyek = DB::table('proyeks')->paginate(5);
         // $departemen = DB::table('departemen')->paginate(10);
 
         // render view with posts
-        return view('pegawai.index', compact('pegawai'));
+        return view('proyek.index', compact('proyek'));
         // return view('departemen.index', ['departemen' => $departemen]);
     }
 }

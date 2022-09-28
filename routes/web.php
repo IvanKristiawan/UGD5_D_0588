@@ -21,10 +21,10 @@ Route::get('/', function () {
 Route::resource('/departemen',
 \App\Http\Controllers\DepartemenController::class);
 
-// Route::get('/pegawai', function () {
-//     return view('pegawai'); /* arahkan ke halaman dashboard */
-// });
-
 // Route Resource
 Route::resource('/pegawai',
 \App\Http\Controllers\PegawaiController::class);
+
+// Route Resource
+Route::resource('/proyek',
+\App\Http\Controllers\ProyekController::class);
