@@ -58,6 +58,8 @@ $item->jumlah_pegawai }}</td>
                                     @endforelse
                                 </tbody>
                             </table>
+
+                            {{ $departemen->links() }}
                         </div>
                     </div>
                     <!-- /.card-body -->

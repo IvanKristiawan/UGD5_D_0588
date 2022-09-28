@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 /* Import Model */
-use App\Models\Departemen;
+use App\Models\Pegawai;
 use Illuminate\Http\Request;
 use DB;
 
-class DepartemenController extends Controller
+class PegawaiController extends Controller
 {
-    /**
+     /**
      * index
      * 
      * @return void
@@ -18,12 +18,12 @@ class DepartemenController extends Controller
     public function index()
     {
         // det posts
-        $departemen = Departemen::get();
-        $departemen = DB::table('departemens')->paginate(5);
+        $pegawai = Pegawai::get();
+        // $pegawai = DB::table('pegawais')->paginate(5);
         // $departemen = DB::table('departemen')->paginate(10);
 
         // render view with posts
-        return view('departemen.index', compact('departemen'));
+        return view('pegawai.index', compact('pegawai'));
         // return view('departemen.index', ['departemen' => $departemen]);
     }
 }
