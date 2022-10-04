@@ -48,24 +48,26 @@ class DepartemenController extends Controller
     {
         // Validation for required fields (and using some regex to validate our numeric value)
         $request->validate([
-            'nama_departemen'=>'required',
-            'nama_manager'=>'required',
-            'jumlah_pegawai'=>'required'
-        ]); 
+            'nama_departemen' => 'required',
+            'nama_manager' => 'required',
+            'jumlah_pegawai' => 'required'
+        ]);
         $stock = Departemen::find($id);
         // Getting values from the blade template form
         $stock->nama_departemen =  $request->get('nama_departemen');
         $stock->nama_manager = $request->get('nama_manager');
         $stock->jumlah_pegawai = $request->get('jumlah_pegawai');
         $stock->save();
- 
-        return redirect()->route('departemen.index');
+
+        return redirect()->route('departemen.index')->with(['success'
+        => 'Data Berhasil Diedit!']);
     }
-    public function destroy($id) 
+    public function destroy($id)
     {
-       $user = Departemen::where('id', $id)->firstorfail()->delete();
-       echo ("User Record deleted successfully.");
-       return redirect()->route('departemen.index');
+        $user = Departemen::where('id', $id)->firstorfail()->delete();
+        echo ("User Record deleted successfully.");
+        return redirect()->route('departemen.index')->with(['success'
+        => 'Data Berhasil Dihapus!']);
     }
     /**
      * store
