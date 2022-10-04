@@ -32,6 +32,41 @@ class DepartemenController extends Controller
     {
         return view('departemen.create');
     }
+    // public function edit($id)
+    // {
+    //     $departemen = Departemen::where('id',$id)->get();
+    //     // return view('departemen.edit');
+    //     // return view('departemen.edit',['departemen' => $departemen]);
+    //     return view('departemen.edit', compact('departemen'));
+    // }
+    public function edit($id)
+    {
+        $departemen = Departemen::find($id);
+        return view('departemen.edit', compact('departemen'));  // -> resources/views/stocks/edit.blade.php
+    }
+    public function update(Request $request, $id)
+    {
+        // Validation for required fields (and using some regex to validate our numeric value)
+        $request->validate([
+            'nama_departemen'=>'required',
+            'nama_manager'=>'required',
+            'jumlah_pegawai'=>'required'
+        ]); 
+        $stock = Departemen::find($id);
+        // Getting values from the blade template form
+        $stock->nama_departemen =  $request->get('nama_departemen');
+        $stock->nama_manager = $request->get('nama_manager');
+        $stock->jumlah_pegawai = $request->get('jumlah_pegawai');
+        $stock->save();
+ 
+        return redirect()->route('departemen.index');
+    }
+    public function destroy($id) 
+    {
+       $user = Departemen::where('id', $id)->firstorfail()->delete();
+       echo ("User Record deleted successfully.");
+       return redirect()->route('departemen.index');
+    }
     /**
      * store
      *
