@@ -29,6 +29,8 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
+                    <a href="{{ route('pegawai.create') }}" class="btn btn-md btn-success mb-3">TAMBAH
+                            DEPARTEMEN</a>
                         <div class="table-responsive p-0">
                             <table class="table table-hover textnowrap">
                                 <thead>
@@ -68,6 +70,14 @@
                                         @else 
                                         <td class="text-center">Tidak Aktif</td>
                                         @endif
+                                        <td class="text-center">
+                                            <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('pegawai.destroy', $item->id) }}" method="POST">
+                                                <a href="{{ route('pegawai.edit', $item->id) }}" class="btn btn-sm btn primary">EDIT</a>
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     @empty
                                     <div class="alert alert-danger">

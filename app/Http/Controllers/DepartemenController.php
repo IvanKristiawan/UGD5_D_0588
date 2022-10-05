@@ -32,13 +32,7 @@ class DepartemenController extends Controller
     {
         return view('departemen.create');
     }
-    // public function edit($id)
-    // {
-    //     $departemen = Departemen::where('id',$id)->get();
-    //     // return view('departemen.edit');
-    //     // return view('departemen.edit',['departemen' => $departemen]);
-    //     return view('departemen.edit', compact('departemen'));
-    // }
+    
     public function edit($id)
     {
         $departemen = Departemen::find($id);
